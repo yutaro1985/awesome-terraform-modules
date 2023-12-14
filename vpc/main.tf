@@ -60,7 +60,7 @@ module "endpoints" {
       service             = "ssm"
       private_dns_enabled = true
       subnet_ids          = module.vpc.private_subnets
-      security_group_ids  = [aws_security_group.vpc_tls[module.vpc.vpc_id].id]
+      security_group_ids  = [aws_security_group.vpc_tls["ssm"].id]
     },
     ssmmessages = {
       service             = "ssmmessages"
