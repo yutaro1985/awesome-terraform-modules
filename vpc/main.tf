@@ -47,7 +47,7 @@ module "vpc" {
 }
 
 module "endpoints" {
-  for_each = var.create_ssm_endpoint ? toset([module.vpc.vpc_id]) : toset([])
+  for_each = var.create_ssm_endpoint ? { ssm = module.vpc.vpc_id } : {}
   source   = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
   # バージョン指定に変数使用不可のため直書き
   version = "5.4.0"
@@ -77,7 +77,7 @@ module "endpoints" {
 
 # SSM Endopoint用のセキュリティグループ
 resource "aws_security_group" "vpc_tls" {
-  for_each    = var.create_ssm_endpoint ? toset([module.vpc.vpc_id]) : toset([])
+  for_each    = var.create_ssm_endpoint ? { ssm = module.vpc.vpc_id } : {}
   name_prefix = "${local.vpc_name}-vpc_tls"
   description = "Allow TLS inbound traffic"
   vpc_id      = each.value
