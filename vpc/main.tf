@@ -23,6 +23,7 @@ module "vpc" {
   create_database_subnet_route_table = true
   create_database_subnet_group       = true
   # オプション
+  map_public_ip_on_launch                       = true
   public_subnet_assign_ipv6_address_on_creation = true
   enable_ipv6                                   = true
   public_subnet_ipv6_prefixes                   = local.public_subnets_prefixes
