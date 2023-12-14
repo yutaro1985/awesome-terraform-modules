@@ -23,17 +23,17 @@ module "vpc" {
   create_database_subnet_route_table = true
   create_database_subnet_group       = true
   # オプション
-  assign_ipv6_address_on_creation = true
-  enable_ipv6                     = true
-  public_subnet_ipv6_prefixes     = local.public_subnets_prefixes
-  database_subnet_ipv6_prefixes   = local.database_subnets_prefixes
-  create_igw                      = true
-  create_egress_only_igw          = true
-  enable_nat_gateway              = false
-  enable_vpn_gateway              = false
-  enable_dns_hostnames            = true
-  enable_dns_support              = true
-  enable_dhcp_options             = true
+  public_subnet_assign_ipv6_address_on_creation = true
+  enable_ipv6                                   = true
+  public_subnet_ipv6_prefixes                   = local.public_subnets_prefixes
+  database_subnet_ipv6_prefixes                 = local.database_subnets_prefixes
+  create_igw                                    = true
+  create_egress_only_igw                        = true
+  enable_nat_gateway                            = false
+  enable_vpn_gateway                            = false
+  enable_dns_hostnames                          = true
+  enable_dns_support                            = true
+  enable_dhcp_options                           = true
 
   manage_default_network_acl    = true
   default_network_acl_tags      = { Name = "${var.project_name}-default-acl-${var.env}" }
