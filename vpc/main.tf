@@ -11,7 +11,7 @@ data "aws_region" "current" {}
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
   # バージョン指定に変数使用不可のため直書き
-  version = "3.14.2"
+  version = "5.4.0"
 
   # 基本設定
   name           = local.vpc_name
@@ -50,7 +50,7 @@ module "endpoints" {
   for_each = var.create_ssm_endpoint ? toset([module.vpc.vpc_id]) : toset([])
   source   = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
   # バージョン指定に変数使用不可のため直書き
-  version = "3.14.2"
+  version = "5.4.0"
 
   vpc_id             = each.value
   security_group_ids = [module.vpc.default_security_group_id]
