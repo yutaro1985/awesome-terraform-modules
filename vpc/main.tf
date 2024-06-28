@@ -51,7 +51,7 @@ module "endpoints" {
   for_each = var.create_ssm_endpoint ? { ssm = module.vpc.vpc_id } : {}
   source   = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
   # バージョン指定に変数使用不可のため直書き
-  version = "5.4.0"
+  version = "5.8.1"
 
   vpc_id             = each.value
   security_group_ids = [module.vpc.default_security_group_id]
