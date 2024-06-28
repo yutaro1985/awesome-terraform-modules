@@ -11,7 +11,7 @@ data "aws_region" "current" {}
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
   # バージョン指定に変数使用不可のため直書き
-  version = "5.4.0"
+  version = "5.8.1"
 
   # 基本設定
   name           = local.vpc_name
